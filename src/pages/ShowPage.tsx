@@ -30,4 +30,32 @@ const ShowPage = () => {
   return <TvShow {...tvShow}></TvShow>;
 };
 
+// const ShowListEpisodes = styled.article`
+//   @media screen and (min-width: 1500px) {
+//     .episodes-grid {
+//       display: grid;
+//       grid-template-columns: repeat(3, 1fr);
+//     }
+//   }
+
+//   @media screen and (min-width: 1024px) and (max-width: 1500px) {
+//     .episodes-grid {
+//       display: grid;
+//       grid-template-columns: repeat(2, 1fr);
+//     }
+//   }
+
+//   @media screen and (max-width: 1024px) {
+//     .episodes-grid {
+//       display: grid;
+//       grid-template-columns: repeat(1, 1fr);
+//     }
+//   }
+
+//   #resp-table {
+//     width: 100%;
+//     display: table;
+//   }
+// `;
+
 export default ShowPage;

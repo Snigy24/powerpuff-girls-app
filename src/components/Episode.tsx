@@ -4,7 +4,7 @@ import { EpisodeDetails } from "../Types/ListEpisodeType";
 const Episode = (props: EpisodeDetails) => {
   return (
     <div>
-      <p>{props.title}</p>
+      <p>{props.episodeName}</p>
       <img src={props.coverImage} alt="Powerpuff girl" />
       <p>{props.summary}</p>
       <p>{props.releaseDate}</p>

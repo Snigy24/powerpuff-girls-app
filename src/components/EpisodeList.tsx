@@ -1,12 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { EpisodeContent } from "../Types/EpisodeType";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import { useGlobalContext } from "../globalcontext/globalContext";
+import { EpisodeDetails } from "../Types/ListEpisodeType";
 
 const url = process.env.REACT_APP_BACKEND_URL;
 
 const EpisodeList = () => {
-  const [listEpisodes, setListEpisodes] = useState<EpisodeContent[]>([]);
+  let navigate = useNavigate();
+  const [listEpisodes, setListEpisodes] = useState<EpisodeDetails[]>([]);
   useEffect(() => {
     const fetchEpisodes = async () => {
       await axios({
@@ -15,10 +18,13 @@ const EpisodeList = () => {
       }).then((response) => {
         setListEpisodes(
           response.data.map((information: any) => {
-            const episodes: EpisodeContent = {
-              season: information.season,
-              episodeNumber: information.number,
+            const episodes: EpisodeDetails = {
               episodeName: information.name,
+              coverImage: information.image.original,
+              summary: information.summary,
+              releaseDate: information.airdate,
+              episodeNumber: information.number,
+              episodeSeason: information.season,
             };
             return episodes;
           })
@@ -28,16 +34,28 @@ const EpisodeList = () => {
     fetchEpisodes();
   }, []);
 
+  const { setEpisode } = useGlobalContext();
+
+  const setEpisodeDetailsAndChangePage = (episode: any) => {
+    setEpisode(episode);
+    navigate("/EpisodePage");
+  };
+
   return (
     <ShowListEpisodes>
       <section className="episodes-grid">
         {listEpisodes &&
           listEpisodes.map((episode) => {
             return (
-              <div>
-                <p>Season: {episode.season}</p>
-                <p>Episode Name: {episode.episodeName}</p>
-                <p>Episode Number: {episode.episodeNumber}</p>
+              <div
+                className="resp-table"
+                onClick={() => {
+                  setEpisodeDetailsAndChangePage(episode);
+                }}
+              >
+                <span>Season: {episode.episodeSeason}</span>
+                <span>Episode Name: {episode.episodeName}</span>
+                <span>Episode Number: {episode.episodeNumber}</span>
               </div>
             );
           })}
@@ -66,6 +84,11 @@ const ShowListEpisodes = styled.article`
       display: grid;
       grid-template-columns: repeat(1, 1fr);
     }
+  }
+
+  #resp-table {
+    width: 100%;
+    display: table;
   }
 `;
 

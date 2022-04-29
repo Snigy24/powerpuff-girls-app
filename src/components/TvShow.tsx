@@ -1,4 +1,3 @@
-import React from "react";
 import { ShowTv } from "../Types/ShowType";
 import EpisodeList from "./EpisodeList";
 
