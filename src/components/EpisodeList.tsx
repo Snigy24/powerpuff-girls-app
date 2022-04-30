@@ -43,23 +43,32 @@ const EpisodeList = () => {
 
   return (
     <ShowListEpisodes>
-      <section className="episodes-grid">
+      <article className="episodes-grid">
         {listEpisodes &&
           listEpisodes.map((episode) => {
             return (
-              <div
-                className="resp-table"
+              <section
+                className="details-align"
                 onClick={() => {
                   setEpisodeDetailsAndChangePage(episode);
                 }}
               >
-                <span>Season: {episode.episodeSeason}</span>
-                <span>Episode Name: {episode.episodeName}</span>
-                <span>Episode Number: {episode.episodeNumber}</span>
-              </div>
+                <span>
+                  <p>Season:</p>
+                  <p>{episode.episodeSeason}</p>
+                </span>
+                <span>
+                  <p>Name:</p>
+                  <p>{episode.episodeName}</p>
+                </span>
+                <span>
+                  <p>Number:</p>
+                  <p>{episode.episodeNumber}</p>
+                </span>
+              </section>
             );
           })}
-      </section>
+      </article>
     </ShowListEpisodes>
   );
 };
@@ -86,9 +95,13 @@ const ShowListEpisodes = styled.article`
     }
   }
 
-  #resp-table {
-    width: 100%;
-    display: table;
+  .details-align {
+    text-align: center;
+    display: grid;
+    grid-template-columns: 0.75fr 1fr 0.75fr;
+    margin: 1.5rem 10 1.5rem 0;
+    // border: 1px solid black;
+    padding: 0.5rem;
   }
 `;
 
