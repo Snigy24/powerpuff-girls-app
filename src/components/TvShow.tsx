@@ -101,7 +101,6 @@ const ShowtTvShow = styled.article`
   .icons {
     color: #a75f9b;
     font-size: 1.5rem;
-    padding-right: 1rem;
   }
 `;
 

@@ -93,7 +93,6 @@ const ShowtEpisodeDetails = styled.article`
   .icons {
     color: #a75f9b;
     font-size: 1.5rem;
-    padding-right: 1rem;
   }
 
   .homepage {
@@ -105,8 +104,9 @@ const ShowtEpisodeDetails = styled.article`
     padding-top: 4rem;
   }
 
-  .homepage:hover {
+  .homepage:hover > p {
     cursor: pointer;
+    color: red;
   }
 `;
 

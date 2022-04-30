@@ -16,7 +16,7 @@ const ShowPage = () => {
       }).then((response) => {
         setTvShow({
           title: response.data.name,
-          description: response.data.summary,
+          description: response.data.summary.replace(/<\/?[^>]+(>|$)/g, ""),
           airingTime: response.data.airingTime,
           coverImage: response.data.image.original,
           tvshowend: response.data.ended,

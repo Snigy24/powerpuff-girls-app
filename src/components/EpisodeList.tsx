@@ -21,7 +21,7 @@ const EpisodeList = () => {
             const episodes: EpisodeDetails = {
               episodeName: information.name,
               coverImage: information.image.original,
-              summary: information.summary,
+              summary: information.summary.replace(/<\/?[^>]+(>|$)/g, ""),
               releaseDate: information.airdate,
               episodeNumber: information.number,
               episodeSeason: information.season,
@@ -96,12 +96,18 @@ const ShowListEpisodes = styled.article`
   }
 
   .details-align {
+    //background-color: #f6c7ee;
     text-align: center;
     display: grid;
     grid-template-columns: 0.75fr 1fr 0.75fr;
     margin: 1.5rem 10 1.5rem 0;
-    // border: 1px solid black;
     padding: 0.5rem;
+  }
+
+  .details-align:hover {
+    color: red;
+    background-color: #a1a1a1;
+    //filter: brightness(105%);
   }
 `;
 
