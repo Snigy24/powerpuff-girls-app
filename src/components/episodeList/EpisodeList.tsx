@@ -1,12 +1,14 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
+import { useGlobalContext } from "../../globalcontext/globalContext";
 import { useNavigate } from "react-router-dom";
-import { useGlobalContext } from "../globalcontext/globalContext";
-import { EpisodeDetails } from "../Types/ListEpisodeType";
+import { EpisodeDetails } from "../../Types/ListEpisodeType";
 
+/* This is a constant that is used to store the url of the backend. */
 const url = process.env.REACT_APP_BACKEND_URL;
 
+/* Fetching the data from the API and setting the state of the listEpisodes. */
 const EpisodeList = () => {
   let navigate = useNavigate();
   const [listEpisodes, setListEpisodes] = useState<EpisodeDetails[]>([]);
@@ -34,13 +36,20 @@ const EpisodeList = () => {
     fetchEpisodes();
   }, []);
 
+  /* A hook that is used to set the state of the global context. */
   const { setEpisode } = useGlobalContext();
 
+  /**
+   * When the user clicks on an episode, set the episode details and change the page to the episode page.
+   * @param {any} episode - any - this is the episode that is being passed in from the EpisodeList
+   * component.
+   */
   const setEpisodeDetailsAndChangePage = (episode: any) => {
     setEpisode(episode);
     navigate("/EpisodePage");
   };
 
+  /* Returning the list of episodes. */
   return (
     <ShowListEpisodes>
       <article className="episodes-grid">
@@ -73,6 +82,7 @@ const EpisodeList = () => {
   );
 };
 
+/* A styled component that is used to style the EpisodeList component. */
 const ShowListEpisodes = styled.article`
   @media screen and (min-width: 1500px) {
     .episodes-grid {
@@ -96,7 +106,6 @@ const ShowListEpisodes = styled.article`
   }
 
   .details-align {
-    //background-color: #f6c7ee;
     text-align: center;
     display: grid;
     grid-template-columns: 0.75fr 1fr 0.75fr;
@@ -107,7 +116,6 @@ const ShowListEpisodes = styled.article`
   .details-align:hover {
     color: red;
     background-color: #a1a1a1;
-    //filter: brightness(105%);
   }
 `;
 

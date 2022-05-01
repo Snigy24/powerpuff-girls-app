@@ -1,12 +1,17 @@
-import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import ShowPage from "./pages/ShowPage";
 import EpisodePage from "./pages/EpisodePage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { GlobalContext } from "./globalcontext/globalContext";
 import { EpisodeDetails } from "./Types/ListEpisodeType";
+import { GlobalContext } from "./globalcontext/globalContext";
+import { useState } from "react";
 
+/**
+ * The App function is the main function of the application. It is the first function that is called
+ * when the application is loaded. It is responsible for rendering the main components of the
+ * application
+ * @returns The App component is returning the GlobalContext.Provider component.
+ */
 function App() {
   const [episodeDetails, setEpisode] = useState<EpisodeDetails>({
     episodeName: "",

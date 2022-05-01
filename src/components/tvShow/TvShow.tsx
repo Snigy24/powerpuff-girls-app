@@ -1,9 +1,15 @@
-import { ShowTv } from "../Types/ShowType";
-import EpisodeList from "./EpisodeList";
 import styled from "styled-components";
+import EpisodeList from "../episodeList/EpisodeList";
 import { AiFillStar, AiFillClockCircle } from "react-icons/ai";
 import { BiRss } from "react-icons/bi";
+import { ShowTv } from "../../Types/ShowType";
 
+/**
+ * It's a function that takes a single argument, which is an object with the properties title,
+ * description, coverImage, premiered, tvshowend, and ratingSerie. It returns a JSX element.
+ * @param {ShowTv} props - ShowTv
+ * @returns A React component.
+ */
 const TvShow = (props: ShowTv) => {
   return (
     <ShowtTvShow>
@@ -15,7 +21,7 @@ const TvShow = (props: ShowTv) => {
       <section className="details-align">
         <span>
           <AiFillClockCircle className="icons" />
-          <p>{props.airingTime}</p>
+          <p>Show Start at {props.premiered}</p>
         </span>
         <span>
           <BiRss className="icons" />
@@ -34,6 +40,7 @@ const TvShow = (props: ShowTv) => {
   );
 };
 
+/* A styled component that is used to style the TvShow component. */
 const ShowtTvShow = styled.article`
   max-width: 1000px;
   margin: 2rem auto auto auto;

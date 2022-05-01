@@ -1,15 +1,18 @@
-import { useGlobalContext } from "../globalcontext/globalContext";
 import styled from "styled-components";
-import { BsCalendar2Date } from "react-icons/bs";
-import { AiOutlineFieldNumber } from "react-icons/ai";
-import { FaTicketAlt } from "react-icons/fa";
+import { useGlobalContext } from "../globalcontext/globalContext";
 import { useNavigate } from "react-router-dom";
+import { AiOutlineFieldNumber } from "react-icons/ai";
+import { BsCalendar2Date } from "react-icons/bs";
+import { FaTicketAlt } from "react-icons/fa";
 
+/* Destructuring the episodeDetails from the useGlobalContext hook. */
 const EpisodePage = () => {
   const { episodeDetails } = useGlobalContext();
 
+  /* A hook that is used to navigate to a different page. */
   const navigate = useNavigate();
 
+  /* Returning the HTML code. */
   return (
     <ShowtEpisodeDetails>
       <section>
@@ -40,6 +43,7 @@ const EpisodePage = () => {
   );
 };
 
+/* A styled component that is used to style the EpisodePage component. */
 const ShowtEpisodeDetails = styled.article`
   max-width: 1000px;
   margin: 2rem auto auto auto;

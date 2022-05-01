@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <p>
+    Fake Name
+  </p>
+  <img
+    alt="Powerpuff girl"
+    src="Fake Image"
+  />
+  <p>
+    Fake Description
+  </p>
+  <p>
+    2014
+  </p>
+</div>
+`;
